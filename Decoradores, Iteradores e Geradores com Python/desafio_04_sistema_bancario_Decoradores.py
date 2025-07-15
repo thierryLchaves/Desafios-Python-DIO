@@ -148,9 +148,10 @@ class Historico:
             {
                 "tipo":transacao.__class__.__name__,
                 "valor":transacao.valor,
-                "data": datetime.now(),
+                "data": datetime.now().strftime("%d-%m-%Y %H:%M:%S"),
             }
         )
+        
     def gerar_relatorio(self,tipo_transacao = None):
         for transacao  in self._transacoes:
             if tipo_transacao is None or transacao["tipo"].lower() == tipo_transacao.lower():
@@ -195,11 +196,12 @@ class Deposito(Transacao):
         if sucesso_transacao:
             conta.historico.adicionar_transacao(self)
     
+
 def log_transacao(func):  
     @functools.wraps(func)
     def envelope(*agrs,**kwargs):
         func(*agrs,**kwargs)
-        print(f"{datetime.now()} : {func.__name__.upper()}")
+        print(f"{datetime.now().strftime("%d-%m-%Y %H:%M:%S")} : {func.__name__.upper()}")
         return func
         
     return envelope
@@ -263,7 +265,7 @@ def sacar(clientes):
     cliente.realizar_transacao(conta,transacao)
 
 @log_transacao
-def exibir_extrato(clientes):
+def exibir_extrato(clientes, ie_opcao):
     cpf = input("Informe o CPF do cliente: ")
     cliente = filtrar_cliente(cpf,clientes)
 
@@ -275,15 +277,33 @@ def exibir_extrato(clientes):
     if not conta:
         return
 
+    
     print("\n============= EXTRATO =============")
     extrato = ""
     possui_transacao = False
-    for transacao in conta.historico.gerar_relatorio(tipo_transacao ="saque"):
-        possui_transacao = True
-        extrato += f"\n{transacao["tipo"]}:\n\t\tR$: {transacao['valor']:.2f}"
+    if ie_opcao == 1:
+        for transacao in conta.historico.gerar_relatorio(tipo_transacao="saque"):
+            possui_transacao = True
+            extrato += f"\n{transacao['data']}\n{transacao['tipo']}:\n\t R$ {transacao['valor']:.2f}"
 
-    if not possui_transacao:
-        extrato = "Não foram realizadas movimentações."
+        if not possui_transacao:
+            extrato = "Não foram realizadas movimentações de saque para o cliente."
+
+    if ie_opcao == 2:
+        for transacao in conta.historico.gerar_relatorio(tipo_transacao="deposito"):
+            possui_transacao = True
+            extrato += f"\n{transacao['data']}\n{transacao['tipo']}:\n\t R$ {transacao['valor']:.2f}"
+
+        if not possui_transacao:
+            extrato = "Não foram realizadas movimentações de deposito para o cliente."
+
+    if ie_opcao == 0:
+        for transacao in conta.historico.gerar_relatorio():
+            possui_transacao = True
+            extrato += f"\n{transacao['data']}\n{transacao['tipo']}:\n\t R$ {transacao['valor']:.2f}"
+
+        if not possui_transacao:
+            extrato = "Não foram realizadas movimentações."
 
     print(extrato)
     print(f"\nSaldo:\n\tR$:{conta.saldo:.2f}")
@@ -324,7 +344,7 @@ def criar_conta(numero_conta,clientes,contas):
     print("\n=== COntas criada com sucesso! ===")
 
 def listar_contas(contas):
-    for conta in contas:
+    for conta in ContaIterador(contas):
         print("="*100)
         print(textwrap.dedent(str(conta)))
 
@@ -335,6 +355,7 @@ def main():
     while True:
         opcao = menu()
 
+
         if opcao == "d":
             depositar(clientes)
 
@@ -342,7 +363,8 @@ def main():
             sacar(clientes)
 
         elif opcao == "e":
-            exibir_extrato(clientes)
+            tipo_exatrato = int(input('Digite o tipo de operação: 1 saque 2 deposito 0 todas : '))
+            exibir_extrato(clientes,tipo_exatrato)
 
         elif opcao == "nu":
             criar_cliente(clientes)            
