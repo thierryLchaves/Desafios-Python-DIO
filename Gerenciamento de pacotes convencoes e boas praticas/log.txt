@@ -1,0 +1,28 @@
+@@@@
+[2025-07-18 23:13:08]: Função 'criar_cliente' executada.
+--> Argumentos: Argumentos posicionais: ([<PessoaFisica: ('thierry','1')>],), Argumentos nomeados: {}
+--> Retornou: None
+@@@@
+[2025-07-18 23:13:12]: Função 'criar_conta' executada.
+--> Argumentos: Argumentos posicionais: (1, [<PessoaFisica: ('thierry','1')>], [<ContaCorrente: ('0001)', '1', thierry')>]), Argumentos nomeados: {}
+--> Retornou: None
+@@@@
+[2025-07-18 23:13:18]: Função 'depositar' executada.
+--> Argumentos: Argumentos posicionais: ([<PessoaFisica: ('thierry','1')>],), Argumentos nomeados: {}
+--> Retornou: None
+@@@@
+[2025-07-18 23:13:25]: Função 'depositar' executada.
+--> Argumentos: Argumentos posicionais: ([<PessoaFisica: ('thierry','1')>],), Argumentos nomeados: {}
+--> Retornou: None
+@@@@
+[2025-07-18 23:13:28]: Função 'sacar' executada.
+--> Argumentos: Argumentos posicionais: ([<PessoaFisica: ('thierry','1')>],), Argumentos nomeados: {}
+--> Retornou: None
+@@@@
+[2025-07-18 23:13:35]: Função 'sacar' executada.
+--> Argumentos: Argumentos posicionais: ([<PessoaFisica: ('thierry','1')>],), Argumentos nomeados: {}
+--> Retornou: None
+@@@@
+[2025-07-18 23:13:41]: Função 'sacar' executada.
+--> Argumentos: Argumentos posicionais: ([<PessoaFisica: ('thierry','1')>],), Argumentos nomeados: {}
+--> Retornou: None

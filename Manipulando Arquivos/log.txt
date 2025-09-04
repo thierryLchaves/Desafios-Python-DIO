@@ -1,0 +1,36 @@
+@@@@
+[2025-07-18 18:17:07]: Função 'criar_cliente' executada.
+--> Argumentos: Argumentos posicionais: ([<PessoaFisica: ('thierry','1')>],), Argumentos nomeados: {}
+--> Retornou: None
+@@@@
+[2025-07-18 18:17:10]: Função 'criar_conta' executada.
+--> Argumentos: Argumentos posicionais: (1, [<PessoaFisica: ('thierry','1')>], [<ContaCorrente: ('0001)', '1', thierry')>]), Argumentos nomeados: {}
+--> Retornou: None
+@@@@
+[2025-07-18 18:17:18]: Função 'depositar' executada.
+--> Argumentos: Argumentos posicionais: ([<PessoaFisica: ('thierry','1')>],), Argumentos nomeados: {}
+--> Retornou: None
+@@@@
+[2025-07-18 18:17:26]: Função 'criar_cliente' executada.
+--> Argumentos: Argumentos posicionais: ([<PessoaFisica: ('lucas','2')>],), Argumentos nomeados: {}
+--> Retornou: None
+@@@@
+[2025-07-18 18:17:29]: Função 'criar_conta' executada.
+--> Argumentos: Argumentos posicionais: (1, [<PessoaFisica: ('lucas','2')>], []), Argumentos nomeados: {}
+--> Retornou: None
+@@@@
+[2025-07-18 18:17:37]: Função 'criar_conta' executada.
+--> Argumentos: Argumentos posicionais: (1, [<PessoaFisica: ('lucas','2')>], [<ContaCorrente: ('0001)', '1', lucas')>]), Argumentos nomeados: {}
+--> Retornou: None
+@@@@
+[2025-07-18 18:17:44]: Função 'depositar' executada.
+--> Argumentos: Argumentos posicionais: ([<PessoaFisica: ('lucas','2')>],), Argumentos nomeados: {}
+--> Retornou: None
+@@@@
+[2025-07-18 18:17:50]: Função 'sacar' executada.
+--> Argumentos: Argumentos posicionais: ([<PessoaFisica: ('lucas','2')>],), Argumentos nomeados: {}
+--> Retornou: None
+@@@@
+[2025-07-18 18:17:55]: Função 'exibir_extrato' executada.
+--> Argumentos: Argumentos posicionais: ([<PessoaFisica: ('lucas','2')>],), Argumentos nomeados: {}
+--> Retornou: None
